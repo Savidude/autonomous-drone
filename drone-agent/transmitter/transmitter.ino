@@ -1,7 +1,7 @@
 #include  <SPI.h>
 #include "nRF24L01.h"
 #include "RF24.h"
-int msg;
+int msg[1];
 RF24 radio(9,10);
 const uint64_t pipe = 0xE8E8F0F0E1LL;
 
@@ -19,7 +19,7 @@ void loop(void){
   digitalWrite(trigPin, HIGH); delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH, 5400);
-  msg= duration*0.034/2;
-  Serial.println(msg);
-  radio.write(88, 1);
+  msg[0] = duration*0.034/2;
+  Serial.println(msg[0]);
+  radio.write(msg, 1);
 }
