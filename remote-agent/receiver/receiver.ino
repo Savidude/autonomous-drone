@@ -5,7 +5,7 @@ int msg[1];
 RF24 radio(9,10);
 const uint64_t pipe = 0xE8E8F0F0E1LL;
 int up = 5; int down = 6; int spd;
-int RemPwr = 15; int Tune = 40; 
+int RemPwr = 30; int Tune = 40; 
 
 void setup(void){
   Serial.begin(9600);
@@ -18,7 +18,7 @@ void setup(void){
  
 void loop(void){
   if (Serial.available() == 1){
-    int Tune = Serial.parseInt(); 
+    Tune = Serial.parseInt(); 
   }
   
  if (radio.available()){
@@ -49,7 +49,7 @@ void loop(void){
             
   }
   else{
-    Serial.println("No radio available");
+//    Serial.println("No radio available");
 //    analogWrite(up,0);
 //    analogWrite(down,0);    
   }
